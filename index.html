@@ -1591,7 +1591,7 @@ function buildPdfTemplate(data) {
         ? `<img src="${logo}" style="max-width:110px;max-height:110px;object-fit:contain;">`
         : `<div style="font-size:3rem;color:rgba(255,255,255,0.3)">🏗️</div>`;
       return `
-      <div style="width:794px;height:1123px;position:relative;overflow:hidden;background:#1a1a2e;
+      <div data-dark="1" style="width:794px;height:1123px;position:relative;overflow:hidden;background:#1a1a2e;
                   display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif">
         <div style="position:absolute;top:0;left:0;right:0;height:6px;background:${color}"></div>
         <div style="position:absolute;bottom:-80px;right:-80px;width:400px;height:400px;
@@ -1640,7 +1640,7 @@ function buildPdfTemplate(data) {
         </div>`).join('');
 
       return `
-      <div style="width:794px;height:1123px;position:relative;overflow:hidden;background:#1a1a2e;
+      <div data-dark="1" style="width:794px;height:1123px;position:relative;overflow:hidden;background:#1a1a2e;
                   font-family:'Outfit',sans-serif">
         <div style="position:absolute;top:0;left:0;right:0;height:6px;background:${color}"></div>
         <div style="position:absolute;bottom:-100px;left:-100px;width:400px;height:400px;
@@ -1886,7 +1886,7 @@ async function generatePDF() {
 
     for (let i = 0; i < topPages.length; i++) {
       text.textContent = `Rendu page ${i+1} / ${topPages.length}…`;
-      const bg = topPages[i].style.background === '#1a1a2e' ? '#1a1a2e' : '#ffffff';
+      const bg = topPages[i].dataset.dark === '1' ? '#1a1a2e' : '#ffffff';
       const canvas = await html2canvas(topPages[i], {
         scale: 2,
         useCORS: true,
